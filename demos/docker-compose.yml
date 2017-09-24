@@ -1,0 +1,29 @@
+# inspired from http://www.newmediacampaigns.com/blog/docker-for-php-developers
+
+version: '2'
+
+
+
+
+services:
+  php:
+    command: php -S 0.0.0.0:8000
+    ports:
+      - "8001:8000"
+    image: kgtech/php7-dev
+    volumes:
+      - .:/var/www
+      - ~/.ssh:/root/.ssh
+      - ./docker/php.ini:/usr/local/etc/php/php.ini
+        #    depends_on:
+        #- db
+
+  # db:
+  #   image: mariadb:10
+  #   ports:
+  #     - "3308:3306"
+  #   environment:
+  #     - MYSQL_USER=user
+  #     - MYSQL_PASSWORD=password
+  #     - MYSQL_ROOT_PASSWORD=password
+  #     - MYSQL_DATABASE=symfony
